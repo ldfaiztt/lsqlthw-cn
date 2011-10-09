@@ -1,0 +1,176 @@
+Learn SQL The Hard Way Outline
+==============================
+
+Copyright Zed A. Shaw, All Right Reserved.
+
+
+* Introduction
+
+A book that teaches SQL to anyone, and attempts to bridge people who know OOP
+over to understanding ER and SQL.  It uses only SQLite as the "scripting language"
+to keep learning simple.  Most exercises will focus on doing things with multiple
+tables at the same time, and through indirection teach things like foreign keys.
+
+Each exercise will introduce the concept in the usual "Learn The Hard Way" style.
+It will also have a small section on "portability" that explains what might be
+different in PostgreSQL and/or MySQL, or any other gotchas to be aware of so that
+the book is useful on more than just sqlite3.
+
+Outline
+=======
+
+
+0. The Setup
+
+1. Creating Tables
+    * CREATE TABLE
+
+2. Create A Multi-Table Database
+
+3. Inserting Data
+    * INSERT
+    * last_insert_row_id() and why it's needed
+
+4. Insert Referential Data
+
+5. Selecting Data
+    * SELECT
+    * LIKE
+    * GLOB
+
+6. Select Across Many Tables
+
+7. Deleting And Updating
+    * DELETE
+
+8. Delete Using Other Tables
+
+9. Updating Data
+    * UPDATE
+
+10. Updating Complex Data
+
+11. Replacing Data
+    * REPLACE
+
+12. Destroying And Altering Tables
+    * DROP TABLE
+    * ALTER TABLE
+
+13. Data Migration And Evolving
+
+14. Data Modeling
+    * A crash course in ER and how it maps to OOP.
+
+15. Making Indices
+    * CREATE INDEX
+    * DROP INDEX
+
+16. Optimizing A Database
+
+17. Using Triggers
+    * CREATE TRIGGER
+    * DROP TRIGGER
+
+18. Updating One Table From Another
+    * Also cover why this is a bad practice.
+
+19. Working With Views
+    * CREATE VIEW
+    * DROP VIEW
+
+20. Simple Data Analysis With Views
+
+21. Basic Transations
+    * BEGIN TRANSACTION
+    * COMMIT TRANSACTION
+    * ROLLBACK TRANSACTION
+    * END TRANSACTION
+
+22. Safe Data Practice With Transactions
+
+23. Advanced Transactions And Savepoints
+    * SAVEPOINT
+    * RELEASE SAVEPOINT
+
+24. Date And Time Functions
+    * Cover things like NOW() and how unstandard all this is.
+
+25. Range Queries By Dates
+
+26. GROUP BY And Counts
+    * GROUP BY 
+    * count(*)
+
+27. Getting Averages
+    * avg(X)
+
+28. Maximums And Mimimums
+    * max(X)
+    * min(X)
+
+29. Sums And Totals
+    * sum(X)
+    * total(X)
+
+30. Getting Basic Statistics
+
+31. String Manipulation
+    * trim, ltrim, upper, etc. from core functions
+
+32. Fixing Databases With Bad Input
+
+33. Math Functions
+    * abs, max, min, etc.
+
+34. More Data Analysis
+
+35. Logic and Math Expressions
+    * Available Operators
+    * Literals
+    * Boolean Expressions
+
+36. Complex Decision Expressions
+
+37. Attaching And Detaching
+    * ATTACH DATABASE
+    * DETACH DATABASE
+
+38. Analyzing Tables
+    * ANALYZE
+    * INDEXED BY
+
+39. Explaining Queries
+    * EXPLAIN
+
+40. Optimizing More With EXPLAIN
+
+41. Forcing Reindexing
+    * REINDEX
+
+42. Vacuuming Junk
+    * VACUUM
+
+43. Setting Options With Pragma
+    * PRAGMA
+
+44. Handy Pragmas
+
+45. Using Reserved Keywords In Queries
+
+46. Designing A Real Database
+
+47. Mapping OOP Concepts To SQL
+
+48. Using The Database From Python
+
+49. Using The Database From C
+
+50. Using The Database From R
+
+51. Using The Database From Objective-C
+
+52. Final Exam: Extend And Optimize The Database
+
+* Next Steps
+
