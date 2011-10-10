@@ -1,7 +1,7 @@
 JUNK_FILES=$(FINAL).* *.aux *.log styles/*.aux
 SOURCE=book
-WEBSITE=/var/www/learncodethehardway.org/c/
-FINAL=learn-c-the-hard-way
+WEBSITE=/var/www/learncodethehardway.org/sql/
+FINAL=learn-sql-the-hard-way
 
 book:
 	dexy
