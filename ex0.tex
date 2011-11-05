@@ -1,17 +1,54 @@
 \chapter{Exercise 0: The Setup}
 
+This book will use \href{http://www.sqlite.org/download.html}{SQLite3} as a training
+tool.  SQLite3 is a complete database system that has the advantage of requiring almost
+no setup.  You just download a binary and work it like most other scripting languages.
+Using this, you'll be able to learn SQL without getting stuck in the administrivia of
+administering a database server.
 
-The code and explanation goes here.
+Installing SQLite3 is easy:
 
-\section{What You Should See}
+\begin{enumerate}
+\item Either go to \href{http://www.sqlite.org/download.html}{their downloads page}
+    and grab the binary for your platform.  Look for "Precompiled Binaries for X" with
+    X being your operating system of choice.
+\item Use your operating system's package manager to install it.  If you're on Linux
+    then you know what that means.  If you're on OSX then first go get a package
+    manager and then use it to install sqlite3.
+\end{enumerate}
 
-What it looks like to run it is here.
+When you've got it installed, then make sure you can start up a command line and 
+run it.  Here's a quick test for you to try:
+
+\begin{lstlisting}
+sqlite3 test.sqlite
+SQLite version 3.7.8 2011-09-19 14:49:19
+Enter ".help" for instructions
+Enter SQL statements terminated with a ";"
+sqlite> .quit
+\end{lstlisting}
+
+Then look to see that the \file{test.sqlite} file is there.  If that works
+then you're all set.  You should make sure that your version of SQLite3
+is the same as the one I have here: 3.7.8.  Sometimes things won't work
+right with older versions.
+
+\section{Additional Tools You'll Need}
+
+You will also need to have the following additional tools:
+
+\begin{enumerate}
+\item A good plain text editor.  Use anyone you like, but do \emph{not} use an IDE (Integrated Development Environment).  They cannot help you.
+\item Familiarity with your command line (aka Terminal, aka cmd.exe).  You'll be running commands from there.
+\item An internet connection with a web browser so you can look up documentation and research things I tell you to find.
+\end{enumerate}
+
+Once you have that all setup you are ready to go.
 
 \section{Extra Credit}
 
-Extra things you should do on your own to learn more.
+\begin{enumerate}
+\item Go to the \href{http://www.sqlite.org/download.html}{SQLite3} site again and browse around through the documentation.
+\end{enumerate}
 
-\section{Portability Notes}
-
-Potential portability problems with this concept in other databases.
 
