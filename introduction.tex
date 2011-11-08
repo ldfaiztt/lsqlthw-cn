@@ -58,6 +58,61 @@ When you're done with this book, you should understand SQL well, how to design
 data, a bit about optimizing databases, and you should be able to branch out into
 another database of your choice.
 
+\subsection*{What Is SQL?}
+
+I pronounce SQL "sequel" but you can also say "ESS-QUEUE-ELL" if you want. What SQL 
+does is give you a language for interacting with data in a database.  It's advantage
+though is that it closely matches a theory established many years ago defining properties
+of well structured data.  It's not exactly the same (which some detractors lament) but
+it's close enough to be useful.
+
+How SQL works is it understands fields that are in tables, and how to find the
+data in the tables based on the contents of the fields.  All SQL operations are
+then one of four general things you do to tables:
+
+\begin{definition}
+\item[Create] Putting data into tables.
+\item[Read] Query data out of a table.
+\item[Update] Change data already in a table.
+\item[Delete] Remove data from the table.
+\end{definition}
+
+This has been given the acronym "CRUD" and is considered a fundamental set of
+features \emph{every} data storage system must have.  In fact, if you can't do 
+one of these four in some way then there better be a very good reason.
+
+One way I like to explain how SQL works is by comparing it to a spreadsheet 
+software like Excel like this:
+
+\begin{enumerate}
+\item A database is a whole spreadsheet file.
+\item A table is a tab/sheet in the spreadsheet, with each one being given a name.
+\item A column is a column in both.
+\item A row is a row in both.
+\item SQL then gives you a language for doing CRUD operations on these to 
+    produce \emph{new tables or alter existing ones}.
+\end{enumerate}
+
+The last item is significant, and not understanding this causes people a lot of headaches.
+SQL only knows tables, and every operation produces tables.  It either "produces" a table
+by modifying an existing one, or it returns a new temporary table as your data set.
+
+As you read this book, you'll begin to understand the significance of this design.  For
+example, one of the reasons Object Oriented languages are mismatched with SQL databases
+is that OOP languages are organized around graphs, but SQL wants to only return tables.
+Since it's possible to map nearly any graph to a table and vice-versa this works, but
+it places a lot of work on the OOP language to do the translation.  If SQL returned
+a nested data structure then this wouldn't be a problem.
+
+Another place that causes a mismatch is in SQL concepts such as ternary
+relationships and attributed relationships, which OOP just completely does not
+understand.  In SQL I can make 3 tables related to each other using a 4th
+table, and that 4th table is a cohesive relationship.  To do the same thing in
+an OOP language I have to make a whole intermediary class that encodes this
+relationship, which is kind of weird in OOP.
+
+This may sound like total magic incantations right now, but by the time you're
+done with this book you'll understand these issues and how to deal with them.
 
 \subsection*{Against Indoctrination}
 
@@ -96,5 +151,6 @@ and let me know.  Commenting on the contents though is pointless since there
 really aren't any.
 
 You are free to read this book, but you can't give it out to anyone else or
-host it yourself.  When the book is done I will change the license.
+host it yourself.
+
 
