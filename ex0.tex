@@ -21,14 +21,15 @@ When you've got it installed, then make sure you can start up a command line and
 run it.  Here's a quick test for you to try:
 
 \begin{lstlisting}
-sqlite3 test.sqlite
+$ sqlite3 test.db
 SQLite version 3.7.8 2011-09-19 14:49:19
 Enter ".help" for instructions
 Enter SQL statements terminated with a ";"
+sqlite> create table test (id);
 sqlite> .quit
 \end{lstlisting}
 
-Then look to see that the \file{test.sqlite} file is there.  If that works
+Then look to see that the \file{test.db} file is there.  If that works
 then you're all set.  You should make sure that your version of SQLite3
 is the same as the one I have here: 3.7.8.  Sometimes things won't work
 right with older versions.
