@@ -20,14 +20,17 @@ There isn't anything new here, except when you look at \ident{person\_pet}
 you'll see that I've made two columns: \ident{person\_id} and \ident{pet\_id}.
 How you would link two tables together is simply \emph{insert} a row
 into \ident{person\_pet} that had the values of the two row's id columns
-you wanted to connect.
+you wanted to connect.  For example, if \ident{person} contained a row with
+\ident{id=20} and \ident{pet} had a row with \ident{id=98}, then to say
+that person owned that pet, you would insert \ident{person\_id=20, pet\_id=98}
+into the \ident{person\_pet} relation (table).
 
 We'll get into actually inserting data like this in the next few exercises.
 
 \section{What You Should See}
 
 You run this SQL script in the same way as before, but you specify
-\file{ex2.db} instead of \file{ex1.db}.  As usually there's no output,
+\file{ex2.db} instead of \file{ex1.db}.  As usual there's no output,
 but this time I want you to open the database and use the 
 \ident{.schema} command to dump it:
 
