@@ -1,17 +1,63 @@
 \chapter{Exercise 2: Creating A Multi-Table Database}
 
+Creating one table isn't too useful.  I want you to now make 3 tables that 
+you can store data into:
 
-The code and explanation goes here.
+\begin{code}{ex2.sql}
+\begin{Verbatim}
+<< d['code/ex2.sql'] >>
+\end{Verbatim}
+\end{code}
+
+In this file you are making tables for two types of data, and then
+"linking" them together with a third table.  People call these 
+"linking" tables "relations", but very pedantic people with no
+lives call all tables "relations" and enjoy confusing people who
+just want to get their jobs done.  In my book, tables that have data
+are "tables", and tables that link tables together are called "relations".
+
+There isn't anything new here, except when you look at \ident{person\_pet}
+you'll see that I've made two columns: \ident{person\_id} and \ident{pet\_id}.
+How you would link two tables together is simply \emph{insert} a row
+into \ident{person\_pet} that had the values of the two row's id columns
+you wanted to connect.
+
+We'll get into actually inserting data like this in the next few exercises.
 
 \section{What You Should See}
 
-What it looks like to run it is here.
+You run this SQL script in the same way as before, but you specify
+\file{ex2.db} instead of \file{ex1.db}.  As usually there's no output,
+but this time I want you to open the database and use the 
+\ident{.schema} command to dump it:
+
+\begin{code}{ex2.out}
+\begin{Verbatim}
+<< d['code/ex2.out'] >>
+\end{Verbatim}
+\end{code}
+
+The "schema" should match what you typed in.
 
 \section{Extra Credit}
 
-Extra things you should do on your own to learn more.
+\begin{enumerate}
+\item In these tables I made a 3rd relation table to link them.  How would you
+    get rid of this relation table \ident{person\_pet} and put that
+    information right into \ident{person}?  What's the implication of this
+    change?
+\item If you can put one row into \ident{person} pet, can you put more than
+    one?  How would you record a crazy cat lady with 50 cats?
+\item Create another table for the cars people might own, and create its
+    corresponding relation table.
+\item Search for "sqlite3 datatypes" in your favorite search engine and 
+    go read the "Datatypes In SQLite Version 3" document.  Take notes on
+    what types you can use and other things that seem important.  We'll
+    cover more later.
+\end{enumerate}
 
 \section{Portability Notes}
 
-Potential portability problems with this concept in other databases.
+Databases have a lot of options for specifying the keys in these relations,
+but for now we'll keep it simple.
 
