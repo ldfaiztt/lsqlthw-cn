@@ -1,16 +1,63 @@
 \chapter{Exercise 1: Creating Tables}
 
+In the introduction I said that you can do "Create Read Update Delete" operations to the data
+inside tables.  How do you make the tables in the first place?  By doing CRUD on the database
+\emph{schema}, and the first SQL statement to learn is \ident{CREATE}:
+
+\begin{code}{ex1.sql}
+\begin{Verbatim}
+<< d['code/ex1.sql'] >>
+\end{Verbatim}
+\end{code}
+
+You could put this all one one line, but I want to talk about each line
+so it's on multiple ones.  Here's what each line does:
+
+\begin{description}
+\item[ex1.sql:1] The start of the "CREATE TABLE" which gives the name of the
+    table as \ident{person}. You then put the fields you want inside parenthesis
+    after this setup.
+\item[ex1.sql:2] An \ident{id} column which will be used to exactly identify
+    each row.  The format of a column is \ident{NAME TYPE}, and in this case
+    I'm saying I want an \ident{INTEGER} that is also a \ident{PRIMARY KEY}.
+    Doing this tells SQLite3 to treat this column special.
+\item[ex1.sql:3-4] A \ident{first\_name} and a \ident{last\_name} column 
+    which are both of type \ident{TEXT}.
+\item[ex1.sql:5] An \ident{age} column that is just a plain \ident{INTEGER}.
+\item[ex1.sql:6] Ending of the list of columns with a closing parenthesis and
+    then a semi-colon ';' character.
+\end{description}
 
 
 \section{What You Should See}
 
-What it looks like to run it is here.
+The easiest way to run this is to simply do: \verb|sqlite3 ex1.db < ex1.sql| and
+it should just exit and not show you anything.  To make sure it created a
+database use \verb|ls -l|:
+
+
+\begin{code}{ex1.out}
+\begin{Verbatim}
+<< d['code/ex1.out'] >>
+\end{Verbatim}
+\end{code}
+
 
 \section{Extra Credit}
 
-Extra things you should do on your own to learn more.
+\begin{enumerate}
+\item SQL is \emph{mostly} a case-insensitive language. It was created in an
+    era when case sensitivity was perceived as a major usability problem, so
+    it has this quirk which can anoy the hell out of programmers from other
+    languages.  Rewrite this so that it's all lowercase and see if it still
+    works.  You'll need to delete ex1.db.
+\item Add other \ident{INTEGER} and \ident{TEXT} fields for other things
+    a person might have.
+\end{enumerate}
 
 \section{Portability Notes}
 
-Potential portability problems with this concept in other databases.
-
+The types used by SQLite3 are usually the same as other databases, but be
+careful as one of the ways SQL database vendors differentiated themselves was
+to "embrace and extend" certain data types.  The worst of these is anything
+to do with date and time.

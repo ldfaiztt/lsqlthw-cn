@@ -9,5 +9,7 @@
     "*Makefile|dexy": {},
     "*.out|dexy": {},
     "*.css|jinja" : {  },
-    "*.cfg|jinja" : {  }
+    "*.cfg|jinja" : {  },
+    "*.sql": {},
+    "*.out": {}
 }
