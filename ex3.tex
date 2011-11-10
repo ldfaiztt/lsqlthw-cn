@@ -1,17 +1,59 @@
 \chapter{Exercise 3: Inserting Data}
 
+You have a couple tables to work with, so now I'll have you put some data into them
+using the \ident{INSERT} command:
 
-The code and explanation goes here.
+\begin{code}{ex3.sql}
+\begin{Verbatim}
+<< d['code/ex3.sql'] >>
+\end{Verbatim}
+\end{code}
+
+In this file I'm using two different forms of the \ident{INSERT} command.
+The first form is the more explicit style, and most likely the one you should
+use.  It specifies the columns that will be inserted, followed by \ident{VALUES},
+then the data to include.  Both of these lists (column names and values)
+go inside parenthesis and are separated by commas.
+
+The second version on line 7 is an abbreviated version that doesn't specify
+the columns and instead relies on the implicit order in the table.  This form
+is dangerous since you don't know what column your statement is actually 
+accessing, and some databases don't have reliable ordering for the columns.
+It's best to only use this form when you're really lazy.
 
 \section{What You Should See}
 
-What it looks like to run it is here.
+I'm going to reuse the \file{ex2.sql} file from the previous exercise to
+recreate the database so you can put data into it.  This is what it looks
+like when I run it:
+
+\begin{code}{ex3.out}
+\begin{Verbatim}
+<< d['code/ex3.out'] >>
+\end{Verbatim}
+\end{code}
+
+In the first line I just make \file{ex3.db} from the \file{ex2.sql} file.
+Then I add the \ident{-echo} argument to \program{sqlite3} so that it
+prints out what it is doing.  After that the data is in the database
+and ready to query.
 
 \section{Extra Credit}
 
-Extra things you should do on your own to learn more.
+\begin{enumerate}
+\item Insert yourself and your pets (or imaginary pets like I have).
+\item If you changed the database in the last exercise to not have the 
+    \ident{person\_pet} table then make a new database with that schema,
+    and insert the same information into it.
+\item Go back to the list of data types and take notes on what format
+    you need for the different types. For example, how many ways can you
+    write TEXT data.
+\end{enumerate}
 
 \section{Portability Notes}
 
-Potential portability problems with this concept in other databases.
-
+As I mentioned in the last exercise, database vendors tend to add lock-in
+to their platforms by extending or altering the data types used.  They'll
+subtly make \emph{their} TEXT columns a little different here, or \emph{their}
+DATETIME columns are called TIMESTAMP and take a different format.  Watch
+out for this when you use a different database.
