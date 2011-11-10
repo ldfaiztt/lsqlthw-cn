@@ -1,17 +1,35 @@
 \chapter{Exercise 10: Updating Complex Data}
 
+In the last exercise I had you do a subquery in the \ident{UPDATE}, and now
+you'll use it to change all the pets I own to be named "Zed's Pet".
 
-The code and explanation goes here.
+\begin{code}{ex10.sql|pyg|l}
+<< d['code/ex10.sql|pyg|l|dexy'] >>
+\end{code}
+
+This is how you update one table based on information from another table.
+There's other ways to do the same thing, but this way is the easiest to
+understand for you right now.
 
 \section{What You Should See}
 
-What it looks like to run it is here.
+As usual, I use my little \file{code.sql} to reset my database and then output
+nicer columns with \program{sqlite3 -header -column -echo}.
+
+\begin{code}{ex10.out}
+\begin{Verbatim}
+<< d['code/ex10.out|dexy'] >>
+\end{Verbatim}
+\end{code}
+
 
 \section{Extra Credit}
 
-Extra things you should do on your own to learn more.
-
-\section{Portability Notes}
-
-Potential portability problems with this concept in other databases.
+\begin{enumerate}
+\item Write an \ident{SQL} that only renames dead pets I own to "Zed's Dead Pet".
+\item Go to the \href{http://www.sqlite.org/lang.html}{SQL As Understood By SQLite}
+    page and start reading through the docs for \ident{CREATE TABLE}, \ident{DROP TABLE}, \ident{INSERT}, \ident{DELETE}, \ident{SELECT}, and \ident{INSERT}.
+\item Try out some of the interesting things you find in these docs, and take notes
+    on things you don't understand so you can research them more later.
+\end{enumerate}
 
