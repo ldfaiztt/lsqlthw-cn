@@ -1,17 +1,56 @@
-\chapter{Exercise 7: Deleting And Updating}
+\chapter{Exercise 7: Deleting Data}
 
+This is the simplest exercise, but I want you to think for a second before
+typing the code in.  If you had "SELECT * FROM" for \ident{SELECT}, and
+"INSERT INTO" for \ident{INSERT}, then how would you write the \ident{DELETE}
+format?  You can probably glance down but try to guess at what it would
+be then look.
 
-The code and explanation goes here.
+\begin{code}{ex7.sql}
+\begin{Verbatim}
+<< d['code/ex7.sql'] >>
+\end{Verbatim}
+\end{code}
+
+I'm simply implementing a very complex update of the robot by deleting 
+him and then putting the record back but with \ident{dead=0}.  In later
+exercises I'll show you how to use \ident{UPDATE} to do this, so don't
+consider this to be the real way you'd do an update.
+
+Most of the lines in this script are already familiar to you, with the
+exception of line 5.  Here you have the \ident{DELETE} and it has
+nearly the same format as other commands.  You give \verb|DELETE FROM table WHERE tests| and a way to think about it is being like a \ident{SELECT} that
+removes rows.  Anything that works in a \ident{WHERE} clause will work here.
 
 \section{What You Should See}
 
-What it looks like to run it is here.
+I'm going to reconstruct the entire database from scratch by replaying all of
+the exercises to this point that you need.  This shows you how your work 
+so far should continue to work as you go through the exercises.
+
+\begin{code}{ex7.out}
+\begin{Verbatim}
+<< d['code/ex7.out'] >>
+\end{Verbatim}
+\end{code}
+
+Notice at the end I'm adding the \program{sqlite3 -echo} so you can see
+what statements run and what they produce.
 
 \section{Extra Credit}
 
-Extra things you should do on your own to learn more.
-
-\section{Portability Notes}
-
-Potential portability problems with this concept in other databases.
+\begin{enumerate}
+\item Go through the output from your run and make sure you know what table
+    is produced for which SQL commands and how they produced that output.
+\item Combine all of \file{ex2.sql} through \file{ex7.sql} into one file and
+    redo the above script so you just run this one new file to recreate
+    the database.
+\item At the top of this new .sql file, add \verb|DROP TABLE| commands to
+    drop the tables you're about to recreate. Now your script can run without
+    you needing to \verb|rm ex3.db|.  You'll need to go look up the syntax
+    for \ident{DROP TABLE}.
+\item Add onto the script to delete other pets and insert them again with
+    new values.  Remember that this is \emph{not} how you normally update
+    records and is only for the exercise.
+\end{enumerate}
 
