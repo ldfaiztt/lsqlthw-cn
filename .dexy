@@ -30,5 +30,6 @@
     "*.css|jinja" : {  },
     "*.cfg|jinja" : {  },
     "*.out": {},
-    "*.sqlite3-console|pyg|l": {}
+    "*.sqlite3-console|pyg|l": {},
+    "*.sh-session|pyg|l": {}
 }
