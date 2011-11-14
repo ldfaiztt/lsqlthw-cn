@@ -22,14 +22,13 @@
     },
     "*.sql|pyg|l": {
         "pygments": {
-            "linenos": "1"
+            "linenos": "true"
         }
     },
     "*.conf|dexy": {},
     "*Makefile|dexy": {},
-    "*.out|dexy": {},
     "*.css|jinja" : {  },
     "*.cfg|jinja" : {  },
-    "*.sql|pyg|l": {},
-    "*.out": {}
+    "*.out": {},
+    "*.sqlite3-console|pyg|l": {}
 }
