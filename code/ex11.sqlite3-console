@@ -1,0 +1,21 @@
+sqlite> /* This should fail because 0 is already taken. */
+sqlite> INSERT INTO person (id, first_name, last_name, age)
+   ...>     VALUES (0, 'Frank', 'Smith', 100);
+Error: PRIMARY KEY must be unique
+sqlite> 
+sqlite> /* We can force it by doing an INSERT OR REPLACE. */
+sqlite> INSERT OR REPLACE INTO person (id, first_name, last_name, age)
+   ...>     VALUES (0, 'Frank', 'Smith', 100);
+sqlite> 
+sqlite> SELECT * FROM person;
+0|Frank|Smith|100
+sqlite> 
+sqlite> /* And shorthand for that is just REPLACE. */
+sqlite> REPLACE INTO person (id, first_name, last_name, age)
+   ...>     VALUES (0, 'Zed', 'Shaw', 37);
+sqlite> 
+sqlite> /* Now you can see I'm back. */
+sqlite> SELECT * FROM person;
+0|Zed|Shaw|37
+sqlite> 
+sqlite>
