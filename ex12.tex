@@ -1,17 +1,59 @@
 \chapter{Exercise 12: Destroying And Altering Tables}
 
+You've already encountered \ident{DROP TABLE} as a way to get rid of
+a table you've created.  I'm going to show you another way to use it
+and also how to add or remove columns from a table with \ident{ALTER TABLE}.
 
-The code and explanation goes here.
+\begin{code}{ex12.sql}
+<< d['code/ex12.sql|pyg|l'] >>
+\end{code}
+
+I'm doing some fake changes to the tables to demonstrate the commands, but
+this is everything you can do in SQLite3 with the \ident{ALTER TABLE} and
+\ident{DROP TABLE} statements.  I'll walk through this so you understand
+what's going on:
+
+\begin{description}
+\item[2] Use the \ident{IF EXISTS} modifier and the table will be dropped
+    only if it's already there.  This suppresses the error you get when
+    running you .sql script on a fresh database that has no tables.
+\item[5] Just recreating the table again to work with it.
+\item[13] Using \ident{ALTER TABLE} to rename it to \ident{peoples}.
+\item[16] Add a new column \ident{hatred} that is an \ident{INTEGER} to
+    the newly renamed table \ident{peoples}.
+\item[19] Rename \ident{peoples} back to \ident{person} because that's
+    a dumb name for a table.
+\item[21] Dump the schema for \ident{person} so you can see it has the
+    new \ident{hatred} column.
+\item[24] Drop the table to clean up after this exercise.
+\end{description}
 
 \section{What You Should See}
 
-What it looks like to run it is here.
+If you run this script it should look something like this:
+
+\begin{code}{ex12 Session Output}
+<< d['code/ex10.sh-session|pyg|l'] >>
+\end{code}
+
+I've added some extra spacing so you can read it easier, and remember to 
+pass in the \program{-echo} argument so it prints out what it's run.
 
 \section{Extra Credit}
 
-Extra things you should do on your own to learn more.
+\begin{enumerate}
+\item Update your \file{code.sql} file you've been putting all the code in so that it
+    uses the \ident{DROP TABLE IF EXISTS} syntax.
+\item Use \ident{ALTER TABLE} to add a \ident{height} and \ident{weight} column
+    to \ident{person} and put that in your \file{code.sql} file.
+\item Run your new \file{code.sql} script to reset your database and you should
+    have no errors.
+\end{enumerate}
 
 \section{Portability Notes}
 
-Potential portability problems with this concept in other databases.
+Typically \ident{ALTER TABLE} is a mashup of just about everything a database
+vendor couldn't put into their SQL syntax.  Some databases will let you do
+more with tables than other databases, so read up on the documentation and
+see what's possible.
 
