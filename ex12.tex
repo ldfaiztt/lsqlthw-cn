@@ -14,18 +14,18 @@ this is everything you can do in SQLite3 with the \ident{ALTER TABLE} and
 what's going on:
 
 \begin{description}
-\item[2] Use the \ident{IF EXISTS} modifier and the table will be dropped
+\item[ex21.sql:2] Use the \ident{IF EXISTS} modifier and the table will be dropped
     only if it's already there.  This suppresses the error you get when
     running you .sql script on a fresh database that has no tables.
-\item[5] Just recreating the table again to work with it.
-\item[13] Using \ident{ALTER TABLE} to rename it to \ident{peoples}.
-\item[16] Add a new column \ident{hatred} that is an \ident{INTEGER} to
+\item[ex21.sql:5] Just recreating the table again to work with it.
+\item[ex21.sql:13] Using \ident{ALTER TABLE} to rename it to \ident{peoples}.
+\item[ex21.sql:16] Add a new column \ident{hatred} that is an \ident{INTEGER} to
     the newly renamed table \ident{peoples}.
-\item[19] Rename \ident{peoples} back to \ident{person} because that's
+\item[ex21.sql:19] Rename \ident{peoples} back to \ident{person} because that's
     a dumb name for a table.
-\item[21] Dump the schema for \ident{person} so you can see it has the
+\item[ex21.sql:21] Dump the schema for \ident{person} so you can see it has the
     new \ident{hatred} column.
-\item[24] Drop the table to clean up after this exercise.
+\item[ex21.sql:24] Drop the table to clean up after this exercise.
 \end{description}
 
 \section{What You Should See}
