@@ -33,4 +33,4 @@ CREATE TABLE pet (
     age INTEGER,
     dead INTEGER
 );
-sqlite> $
+sqlite> 
