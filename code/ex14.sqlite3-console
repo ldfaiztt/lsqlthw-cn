@@ -1,0 +1,36 @@
+$ sqlite3 ex14.db
+SQLite version 3.7.8 2011-09-19 14:49:19
+Enter ".help" for instructions
+Enter SQL statements terminated with a ";"
+sqlite> 
+sqlite> 
+sqlite> .read code.sql 
+/* cut for simplicity */
+
+sqlite> 
+sqlite> BEGIN;
+sqlite> .read ex14.sql
+Error: near line 5: near "person_pet": syntax error
+sqlite> .schema
+/* cut the schema with partial alters in it */
+sqlite> ROLLBACK;
+sqlite> 
+sqlite> .schema
+CREATE TABLE person (
+    id INTEGER PRIMARY KEY,
+    first_name TEXT,
+    last_name TEXT,
+    age INTEGER
+);
+CREATE TABLE person_pet (
+    person_id INTEGER,
+    pet_id INTEGER
+);
+CREATE TABLE pet (
+    id INTEGER PRIMARY KEY,
+    name TEXT,
+    breed TEXT,
+    age INTEGER,
+    dead INTEGER
+);
+sqlite> $

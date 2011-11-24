@@ -1,17 +1,72 @@
 \chapter{Exercise 14: Basic Transactions}
 
+Imagine if the SQL in your last exercise had an error half-way through it's run
+and it aborted.  You may have even ran into this problem, and then you see that
+your database is not seriously broken.  You've been getting away with this
+because you have a big \file{code.sql} file that rebuilds your database, but in
+a real situation you can't trash your whole database when you mess up.
 
-The code and explanation goes here.
+What you need to make your script safer is the \ident{BEGIN}, \ident{COMMIT},
+and \ident{ROLLBACK} commands.  These start a transaction, which creates a
+"boundary" around a group of SQL statements so you can abort them if they have
+an error.  You start the transaction with \ident{BEGIN}, do your SQL, and then
+when everything's good end the transaction with \ident{COMMIT}.  If you have
+an error then you just issue \ident{ROLLBACK} to abort what you did.
 
-\section{What You Should See}
+For this exercise I want you to do the following:
 
-What it looks like to run it is here.
+\begin{enumerate}
+\item Take your \file{ex13.sql} and copy it to \file{ex14.sql} so you can modify it.
+\item Once you have that, put a \ident{BEGIN} at the top and a \ident{ROLLBACK}.  At
+    the bottom.
+\item Now run it and you'll see that it's as if your script didn't do
+    anything.
+\item Next, change the \ident{ROLLBACK} to be \ident{COMMIT} and run it
+    again, and you'll see it works like normal.
+\item Get rid of the \ident{BEGIN} and \ident{COMMIT} from your \file{ex14.sql} so
+    it's back the way it was.
+\item Now create an error by removing one of the \ident{TABLE} keywords from
+    one of the lines.  This is so you can make it have an error and recover.
+\end{enumerate}
+
+Once you have this broken \file{ex14.sql} you'll play with it in the \program{sqlite3}
+console to do a recovery:
+
+\begin{code}{ex14 Session Output}
+<< d['code/ex14.sqlite3-console|pyg|l'] >>
+\end{code}
+
+This one's long so I'm going to break it down so you can track what's going on:
+
+\begin{description}
+\item[1] I start up \program{sqlite3} so I can get into the console with \file{ex14.db}.
+\item[7] I then \ident{.read} the \file{code.sql} file to setup the database like 
+    normal but doing it from within sqlite3.
+\item[11] I enter \ident{BEGIN} so I can start a transaction boundary.
+\item[12] I run \ident{.read ex14.sql} to run it, but remember it has an error
+    so it aborts.  My error was on line 5 but yours could be anywhere else.
+\item[14] I then run \ident{.schema} so you can see that some of the changes
+    actually were made, and I'll want to undo them.
+\item[16] Since the last command had an error I run \ident{ROLLBACK} here to 
+    abort all the things I did since the \ident{BEGIN} on line 11.
+\item[18] To show that the database is back the way it should be, I do another
+    \ident{.schema} and you can see all that junk is now gone.
+\end{description}
+    
 
 \section{Extra Credit}
 
-Extra things you should do on your own to learn more.
+\begin{enumerate}
+\item Read the instructions on \href{http://www.sqlite.org/lang_transaction.html}{SQLite3 transactions} to get an idea of what's possible.
+\item Use transactions to bound some example UPDATES and INSERTS to see how those
+    work too.
+\item Try using the alternative syntax of \ident{BEGIN TRANSACTION}, \ident{COMMIT TRANSACTION}, and \ident{ROLLBACK TRANSACTION}.
+\end{enumerate}
 
 \section{Portability Notes}
 
-Potential portability problems with this concept in other databases.
+Some databases don't have the same rollback and commit semantics as other databases.
+Some also don't understand the syntax with the word \ident{TRANSACTION}.  They should
+universally abort everything you did, but again look at your manual to confirm
+this is true.
 
