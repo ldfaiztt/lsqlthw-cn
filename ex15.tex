@@ -78,17 +78,17 @@ authors know the history of it and nobody else has to understand it.
 With that out of the way, I can get into what Normal Form (NF) actually is on a practical
 level.  I'm not going to get into the mathematics behind it, because honestly it's very
 confusing and not helpful.  I learned it years ago then broke it down into a practical
-set of rules that you should follow:
+process that you can follow to create a good design:
 
 \begin{description}
 \item[conceptualize] Map out all "concepts" or objects in the system and their \emph{cardinality}.
-\item[identify] Every row is identified with a single unique integer primary key.  Never use composite keys.
-\item[relate] All relationships are through primary keys, never through data in the rows.
-\item[itemize] Reduce cardinality to many-to-many or one-to-one, rarely one-to-many.
+\item[identify] Give the concepts all names and create \emph{unique integer primary keys}.
+\item[relate] Draw a simple diagram showing how each concept is related.
+\item[itemize] Write down the cardinality of the relationships as many-to-many or one-to-one, rarely one-to-many.
 \item[atomize] Break out each concept into its attributes and parts.
 \item[reduce] Get rid of anything you don't actually need.  It's easy to add later, harder to remove.
-\item[normalize] Identify all parts of a row that are actually nested parts or duplications and move them into separate tables.
-\item[denormalize] Denormalize tables only for read efficiency and only if you must.
+\item[normalize] Move duplication around to improve consistency and reduce repetition.
+\item[denormalize] Denormalize tables if you must.
 \end{description}
 
 I'll cover each step in order, but keep in mind these are meant to be done continually and for you
