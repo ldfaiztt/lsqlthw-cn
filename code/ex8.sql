@@ -12,7 +12,7 @@ SELECT * FROM person_pet;
 
 DELETE FROM person_pet
     WHERE pet_id NOT IN (
-        SELECT pet_id FROM pet
+        SELECT id FROM pet
     );
 
 SELECT * FROM person_pet;
