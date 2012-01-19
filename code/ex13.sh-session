@@ -15,6 +15,7 @@ CREATE TABLE pet (
     name TEXT,
     breed TEXT,
     age INTEGER,
-    dead INTEGER
+    dead INTEGER,
+    dob DATETIME
 );
 
