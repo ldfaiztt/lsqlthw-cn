@@ -1,0 +1,133 @@
+\chapter*{Introduction: Haters Gonna Hate, Or Why You Still Need SQL}
+
+SQL无处不在。并不是因为我想要你用它才这么说，而是，这就是一个事实。甚至你的口袋里就有，所有的安卓手机和苹果手机都可以轻易接入一个叫做SQLite的SQL数据库，很多应用程序都是直接调用它的。 很多地方都会使用到SQL：银行，医院，大学，政府，大小型企业。 总之几乎每台电脑每个人都要接触到些跟SQL有关的东西。 SQL是一个相当成功而且靠谱的技术。 
+
+可是呢，SQL的麻烦是， \emph{每个人} 都讨厌它的guts.  SQL是一种古怪的非语言( "non-language" )，这一点大多数程序员都无法忍受。在这些现代的基于网页或对象亲和的编程存在之前，SQL就被设计出来了。 尽管它的操作设计是以坚实的数学理论为基础的， 但它还有足够的麻烦能让你觉得恼人。 树？网化对象？子母层关系？SQL一定会嘲笑你并给你一个混乱的大平面表格说“兄弟诶，自己想吧。”
+
+SQL这么讨厌，你为什么还应该学它呢？那是因为在这讨厌的背后，大多数人都不了解SQL也不知道应该怎样正确的使用它。  NoSQL 运动不仅是对古董数据库服务器的反应的一部分，也是一种害怕SQL而又不知道它到底是如何工作的的一种回应。(The NoSQL movement is partially a reaction to antiquated database servers, and also a response to a fear of SQL borne from ignorance of how it works.) 通过学习SQL，你将学习一些很重要的理论基础，这些理论基础是可以应用到几乎每一种数据存储系统的。
+
+不管SQL反对者如何声称，你都应该学习SQL，要知道SQL无处不在，而且了解它也并没有你想象的那么难。成为一名合格的SQL使用者将在以后帮助你决定使用哪种数据库，是否使用SQL，并从程序员视角给出其他数据系统的深入画面。(Becoming an educated SQL user will help you make informed decisions about what databases to use, whether to not use SQL, and give you a deeper understanding of many of the systems you work with as a programmer.)
+
+最后的最后，我觉得你应该学SQL，因为它很方便。你可以快速的使用 SQLite 来原型开发一个简单的数据模型 (网页应用，手机应用，或者桌面应用), 并且你也知道它几乎可以在拥有 SQLite 的任何平台上使用，这几乎就是哪都能用了。为了拥有这样的跨平台操作能力，也为了使用这么强大的数据存储语言，学习SQL还是很值得滴。
+
+\subsection*{关于本书}
+
+This book teaches SQL to anyone, but it helps you can code already.  The 
+concepts in SQL are taught assuming you at least know how to do some programming
+even if it's just a tiny bit.  It also assumes you can run commands from the
+command line, know how to use the shell, and have access to a good programmer's
+text editor.
+
+To keep the book simple, and since managing a giant database server is tangential
+to learning SQL, this book will use \href{http://sqlite.org}{SQLite3} to teach
+the fundamentals of the language.  It will use SQLite3 similar to how you use
+Python or Ruby and you'll be writing full \file{.sql} scripts and running them
+to learn the language.  
+
+Each exercise will introduce the concept in the usual "Learn The Hard Way" style.
+It will also have a small section on "portability" that explains what might be
+different in PostgreSQL and/or MySQL, or any other gotchas to be aware of so that
+the book is useful on more than just sqlite3.
+
+When you're done with this book, you should understand SQL well, how to design
+data, a bit about optimizing databases, and you should be able to branch out into
+another database of your choice.
+
+\subsection*{What Is SQL?}
+
+I pronounce SQL "sequel" but you can also say "ESS-QUEUE-ELL" if you want. SQL
+also stands for Structured Query Language but by now nobody even cares about
+that since that was just a marketing ploy anyway. What SQL does is give you a
+language for interacting with data in a database.  It's advantage though is
+that it closely matches a theory established many years ago defining properties
+of well structured data.  It's not exactly the same (which some detractors
+lament) but it's close enough to be useful.
+
+How SQL works is it understands fields that are in tables, and how to find the
+data in the tables based on the contents of the fields.  All SQL operations are
+then one of four general things you do to tables:
+
+\begin{description}
+\item[Create] Putting data into tables.
+\item[Read] Query data out of a table.
+\item[Update] Change data already in a table.
+\item[Delete] Remove data from the table.
+\end{description}
+
+This has been given the acronym "CRUD" and is considered a fundamental set of
+features \emph{every} data storage system must have.  In fact, if you can't do 
+one of these four in some way then there better be a very good reason.
+
+One way I like to explain how SQL works is by comparing it to a spreadsheet 
+software like Excel:
+
+\begin{enumerate}
+\item A database is a whole spreadsheet file.
+\item A table is a tab/sheet in the spreadsheet, with each one being given a name.
+\item A column is a column in both.
+\item A row is a row in both.
+\item SQL then gives you a language for doing CRUD operations on these to 
+    produce \emph{new tables or alter existing ones}.
+\end{enumerate}
+
+The last item is significant, and not understanding this causes people a lot of headaches.
+SQL only knows tables, and every operation produces tables.  It either "produces" a table
+by modifying an existing one, or it returns a new temporary table as your data set.
+
+As you read this book, you'll begin to understand the significance of this design.  For
+example, one of the reasons Object Oriented languages are mismatched with SQL databases
+is that OOP languages are organized around graphs, but SQL wants to only return tables.
+Since it's possible to map nearly any graph to a table and vice-versa this works, but
+it places a lot of work on the OOP language to do the translation.  If SQL returned
+a nested data structure then this wouldn't be a problem.
+
+Another place that causes a mismatch is in SQL concepts such as ternary
+relationships and attributed relationships, which OOP just completely does not
+understand.  In SQL I can make 3 tables related to each other using a 4th
+table, and that 4th table is a cohesive relationship.  To do the same thing in
+an OOP language I have to make a whole intermediary class that encodes this
+relationship, which is kind of weird in OOP.
+
+This may sound like total magic incantations right now, but by the time you're
+done with this book you'll understand these issues and how to deal with them.
+
+\subsection*{Against Indoctrination}
+
+You may run into someone who thinks you should learn technology X because 
+it is superior.  They'll claim that learning SQLite will cripple you for
+life because it is missing features.  Or, they may say SQL is dead and
+NoSQL is the future.
+
+The problem with these people is they are trying to indoctrinate you, not
+educate you.  They think of the world of technology as a zero sum game
+that they have to win, and if you learn SQL or SQLite then you won't
+learn their system of choice.  Typically, this indoctrination is designed
+so that you must depend on their company's software and services to 
+stay alive.
+
+I want to educate you so that you have the ability to make your own choices and
+learn anything you want.  I'm only using SQLite because it's the simplest and
+most complete SQL system you can install.  Other servers are a huge pain to
+install and manage, but SQLite is one download, and it's free, and it's
+credible. That's the \emph{only} reason I'm using SQLite.  I don't want you to
+be stuck on it.  I don't want to convince you to use SQL over NoSQL.
+
+My only goal is to educate you on this particular tool in the simplest way
+I can so that you can improve as a programmer, and do it in such a way that
+you do \emph{not} need to depend on me or my services when you're done.
+
+Keep that in mind when people try to tell you that learning SQL will somehow
+"cripple" you.  Typically they have something to gain by you remaining
+ignorant.
+
+\subsection*{License And Status}
+
+This book is in \emph{ALPHA} status right now.  If you have comments on what it
+should and should not teach, then feel free to email help@learncodethehardway.org
+and let me know.  Commenting on the contents though is pointless since there
+really aren't any.
+
+You are free to read this book, but you can't give it out to anyone else or
+host it yourself.
+
+
